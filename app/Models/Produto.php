@@ -31,4 +31,9 @@ class Produto extends Model
     public function categoria(){
         return $this->belongsTo(CategoriaProduto::class, 'categoria_id');
     }
+
+    public function acessos(){
+        return $this->hasMany(ProdutoAcesso::class, 'produto_id');
+    }
+
 }

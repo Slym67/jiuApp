@@ -176,6 +176,10 @@ class AppServiceProvider extends ServiceProvider
         if(__insMaster($aluno->email)){
             return false;
         }
+
+        if($aluno->cidade->nome == 'Jaguariaíva'){
+            return false;
+        }
         
         $pag = Mensalidade::
         whereMonth('data_pagamento', '=', date('m'))

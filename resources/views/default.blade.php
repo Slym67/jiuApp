@@ -159,6 +159,13 @@
             </li>
             @endif
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('contribuicao.index') }}">
+                    <i class="la la-hand-holding-usd la-menu"></i>
+                    <span>Contribuição</span>
+                </a>
+            </li>
+
             @if(session('user_logged')['master'])
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLoja"

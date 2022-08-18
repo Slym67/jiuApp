@@ -5,6 +5,11 @@
         !!}
     </div>
     <div class="col-md-3">
+        {!!Form::text('valor_contribuicao', 'Valor contribuição')
+        ->attrs(['class' => 'form-control money'])
+        !!}
+    </div>
+    <div class="col-md-3">
         {!!Form::tel('dias_para_bloqueio', 'Dias para bloqueio de acesso')
         ->attrs(['class' => 'form-control'])
         !!}

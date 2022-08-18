@@ -10,6 +10,6 @@ class Configuracao extends Model
     use HasFactory;
 
     protected $fillable = [ 'valor_mensalidade', 'dias_para_bloqueio', 
-    'dia_pagamento', 'minutos_para_presenca' ];
+    'dia_pagamento', 'minutos_para_presenca', 'valor_contribuicao' ];
 
 }

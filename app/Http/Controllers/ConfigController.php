@@ -16,7 +16,10 @@ class ConfigController extends Controller
     public function store(Request $request){
         $this->_validate($request);
         $config = Configuracao::first();
-        $request->merge(['valor_mensalidade' => __replace($request->valor_mensalidade)]);
+        $request->merge([
+            'valor_mensalidade' => __replace($request->valor_mensalidade),
+            'valor_contribuicao' => __replace($request->valor_contribuicao),
+        ]);
 
         if($config == null){
             Configuracao::create($request->all());

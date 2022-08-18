@@ -6,6 +6,7 @@ use Closure;
 use Response;
 use App\Models\Mensalidade;
 use App\Models\Configuracao;
+use App\Models\Aluno;
 
 class ValidaPagamento
 {
@@ -15,7 +16,7 @@ class ValidaPagamento
 		$value = session('user_logged');
 		$aluno = $value['aluno'];
 
-        if(__insMaster($aluno->email)){
+		if(__insMaster($aluno->email)){
 			return $next($request);
 		}
 
@@ -23,6 +24,12 @@ class ValidaPagamento
 		where('aluno_id', $aluno->id)
 		->orderBy('id', 'desc')
 		->first();
+
+		$aluno = Aluno::findOrFail($aluno->id);
+		
+		if($aluno->cidade->nome == 'Jaguariaíva'){
+			return $next($request);
+		}
 
 		if($ult != null){
 
@@ -33,10 +40,11 @@ class ValidaPagamento
 			}
 
 			$dataAtual = date('Y-m-d H:i');
-			$dataPagamento= \Carbon\Carbon::parse($ult->created_at)->format('Y-m-d H:i');
-
+			$dataPagamento = \Carbon\Carbon::parse($ult->data_pagamento)->format('Y-m-d H:i');
+			
 			$dif = strtotime($dataAtual) - strtotime($dataPagamento);
 			$dif = $dif/24/60/60;
+
 
 			if($dif > $config->dias_para_bloqueio + 30){
 				session()->flash("flash_erro", "Acesso bloqueado, realize o pagamento!");

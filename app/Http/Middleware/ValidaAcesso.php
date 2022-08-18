@@ -60,7 +60,9 @@ class ValidaAcesso
 			'/aviso/view',
 			'/pagamento',
 			'/pagamento/pay',
-			'/perfil/cronogramaPresenca'
+			'/perfil/cronogramaPresenca',
+			'/contribuicao',
+			'/contribuicao/create'
 		];
 
 		if(in_array($uri, $rotas)){

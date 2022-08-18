@@ -111,6 +111,9 @@
 											Fotos do produto: <strong>{{ sizeof($produto->galeria) }}</strong>
 										</div>
 
+										<div class="h6 mb-0 font-weight-bold text-gray-800">
+											Total de acessos: <strong>{{ sizeof($produto->acessos) }}</strong>
+										</div>
 
 										@if($produto->status == false)
 										<h6 class="text-danger mt-1">Produto desativado</h6>

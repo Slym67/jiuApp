@@ -219,6 +219,11 @@ Route::middleware(['validaLogado', 'validaAcesso', 'validaPagamento'])->group(fu
 
 	Route::resource('categoria-produtos', 'CategoriaProdutoController');
 	Route::resource('produtos', 'ProdutoController');
+	Route::resource('contribuicao', 'ContribuicaoController');
+	Route::get('/contribuicaoRetirar', 'ContribuicaoController@retirar')->name('contribuicao.retirar');
+	Route::post('/contribuicaoRetirarStore', 'ContribuicaoController@retirarStore')->name('contribuicao.retirar-store');
+	Route::delete('{id}/contribuicaoRetirarDelete', 'ContribuicaoController@contribuicaoRetirarDelete')->name('contribuicaoRetirar.delete');
+
 	Route::get('/produtos/{id}/galery', 'ProdutoController@galery')->name('produtos.galery');
 	Route::delete('/produtos/{id}/destroy_image', 'ProdutoController@destroy_image')->name('produtos.destroy_image');
 	Route::put('/produtos/{id}/upload_image', 'ProdutoController@upload_image')->name('produtos.upload_image');

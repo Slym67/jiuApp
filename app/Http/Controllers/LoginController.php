@@ -88,7 +88,6 @@ class LoginController extends Controller
                 setCookie('CkLembrar');
             }
 
-
             if(__insMaster($aluno->email)){
                 $session = [
                     'aluno' => $aluno,
@@ -160,6 +159,10 @@ class LoginController extends Controller
                     'master' => 0,
                     'ip_address' => $this->get_client_ip()
                 ];
+
+                if($aluno->cidade->nome == 'Jaguariaíva'){
+                    $redirecionarPagamento = false;
+                }
 
                 $this->saveAccess($aluno, $this->get_client_ip());
                 session(['user_logged' => $session]);

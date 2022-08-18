@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/checkout/{transacao_id}', 'PagamentoController@status');
 Route::get('/checkout_loja/{transacao_id}', 'LojaController@status');
+Route::get('/checkout_contrib/{transacao_id}', 'ContribuicaoController@status');
 Route::post('/aluno/salvarToken', 'AlunoController@salvarToken');
 
 Route::get('/graficoDias', 'DashboardController@graficoDias');

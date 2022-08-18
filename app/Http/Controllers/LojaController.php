@@ -8,6 +8,7 @@ use App\Models\Pedido;
 use App\Models\PedidoItem;
 use App\Models\Aluno;
 use App\Models\Configuracao;
+use App\Models\ProdutoAcesso;
 use App\Models\CategoriaProduto;
 
 class LojaController extends Controller
@@ -48,6 +49,13 @@ class LojaController extends Controller
 
     public function produto_detalhe($id){
         $item = Produto::findOrFail($id);
+
+        $user = session('user_logged');
+        ProdutoAcesso::create([
+            'produto_id' => $item->id,
+            'aluno_id' => $user['aluno']->id
+        ]);
+
         return view('loja/produto_detalhe', compact('item'));
     }
 

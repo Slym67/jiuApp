@@ -14,7 +14,7 @@
 			<div class="card-body">
 				<div class="row align-items-center">
 					<div class="col-md-8">
-						<h3 class="mb-0">Pagamento de mensalidade</h3>
+						<h3 class="mb-0">Contribuição</h3>
 					</div>
 				</div>
 
@@ -22,15 +22,15 @@
 			</div>
 			<div class="card-body">
 
-				<h4 class="mb-2">Valor da mensalidade <strong class="text-primary"> R$ {{ number_format($valor_mensalidade, 2, ',', '.')}}</strong></h4>
+				<h4 class="">Valor <strong class="text-primary"> R$ {{ number_format($valor_contribuicao, 2, ',', '.')}}</strong></h4>
 
 				{!!Form::open()
 				->post()
 				->autocomplete('off')
-				->route('pagamento.pay')
+				->route('contribuicao.store')
 				->multipart()!!}
 				<div class="">
-					@include('pagamento._forms')
+					@include('contribuicao._forms')
 				</div>
 				{!!Form::close()!!}
 
@@ -47,7 +47,7 @@
 <script type="text/javascript">
 	$(function () {
 
-		window.Mercadopago.setPublishableKey('{{getenv("MERCADOPAGO_PUBLIC_KEY_PRODUCAO")}}');
+		window.Mercadopago.setPublishableKey('{{getenv("MERCADOPAGO_PUBLIC_KEY_CONTRIB")}}');
 		window.Mercadopago.getIdentificationTypes();
 
 		setTimeout(() => {
